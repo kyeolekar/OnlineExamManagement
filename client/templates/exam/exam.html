@@ -1,0 +1,92 @@
+<template name="exam">
+  <div class="container">
+    <form role="form" id="addExam" data-parsley-validate>
+      <legend>Create new Test</legend>
+    
+      <div class="form-group">
+        <label for="">Exam Name </label>
+        <input type="text" class="form-control" id="examName" placeholder="Enter Exam name For ex: Sem 1 Exam "
+        data-parsley-required="true">
+      </div>
+
+      <div class="form-group">
+        <label for="className">Class Name</label>
+        {{#if isInRole "Administrator"}}
+        <label class="pull-right"><a href="/add-class">Add new Class</a></label>
+<!--         <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target=".add-class-modal">Add new Class</button>
+
+        <div class="modal fade add-class-modal" tabindex="-1" role="dialog" aria-labelledby="Add Class">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              {{> addClass}}
+            </div>
+          </div>
+        </div> -->
+
+
+
+
+
+        
+        {{/if}}
+
+        <select class="form-control" name="className" id="className" data-parsley-required="true">
+
+          {{#each localClass}}
+            <option>{{name}}</option>
+          {{/each}}
+        </select>
+      </div>
+
+        <div class="form-group">
+          <label for="subjectName">Subject Name</label>
+          {{#if isInRole "Administrator"}}
+          <label class="pull-right"><a href="/add-subject">Add new Subject</a></label>
+          {{/if}}
+          <select class="form-control" name="subjectName" id="subjectName" data-parsley-required="true">
+            {{#each localSubjects}}
+              <option>{{code}}-{{name}} </option>
+            {{/each}}
+          </select>
+        </div>        
+      <button type="submit" class="btn btn-primary">Create test</button>
+
+    </form>
+
+      
+      
+    <br><br>
+    {{#if examsLength}}
+    <legend>Previous Exams ({{examsLength}})</legend>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Exam Name</th>
+            <th>Questions</th>
+            <th>Class</th>
+            <th>Subject</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Generate Result</th>
+            <th>View Generated Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each exams}}
+          <tr>
+            <td>{{examName}}</td>
+            {{#if questions.length}}<td>{{questions.length}}</td>{{else}} <td>0</td> {{/if}}
+            <td>{{className}}</td>
+            <td>{{subjectCode}}</td>
+            <td><a href="/exam/{{_id}}"><span class="glyphicon glyphicon-edit"></span></a></td>
+            <td class="deleteExam"><span class="glyphicon glyphicon-minus-sign"></span></td>
+            <td><a href="/exam/{{_id}}/result">Generate Result</a></td>
+            <td><a href="/exam/{{_id}}/view-result">View Result</a></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{/if}}
+
+  </div>
+</template>

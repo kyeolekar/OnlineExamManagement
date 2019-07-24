@@ -1,0 +1,28 @@
+<template name="subjectEdit">
+    <div class="container">
+        <form id="editSubject"  data-parsley-validate>
+            
+            <div class="form-group">
+                <label for="subject">Subject Code</label>
+                <input type="number" name="code" id="code" value="{{code}}" class="form-control" placeholder="415001" data-parsley-required="true"/>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">
+                    Subject Name
+                </label>
+                <input type="text" name="subject" id="subject" class="form-control" value="{{name}}" placeholder="Enginnering Mathematics" data-parsley-required="true"/>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" name="submit">
+                Edit Subject
+            </button>
+        </form>
+        <a class="pull-right" href="{{pathFor route='subjectView'}}">
+            <button class="btn btn-success">Go Back</button>
+        </a>
+
+            <p>{{examName}}</p>
+
+    </div>
+</template>

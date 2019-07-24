@@ -1,0 +1,45 @@
+<template name="home">
+  <div class="container">
+    {{#if isInRole 'Administrator, Staff'}}
+    <div class="panel panel-primary">
+      {{#if examCount}}
+      <div class="panel-body">
+         You have created {{#if singleCount }} {{examCount}} Exam. {{else }} {{examCount}} Exams. {{/if}} <a href="/exam">Create More</a>
+      </div>
+      {{else}}
+      <div class="panel-body">
+         It looks like you haven't created any exam yet ? <a href="/exam">Create One Now.</a>
+      </div>
+      {{/if}}
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+         You have {{takerCount}} Exams which needs to generate a result. 
+      </div>
+    </div>
+
+<!--     <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>ExamId</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each taker}}
+        <tr>
+          <td>{{examId}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+ -->
+
+
+    
+    {{else}}
+    <h1>403 - Unauthorized Access</h1>
+
+    {{/if}}
+  </div>
+</template>

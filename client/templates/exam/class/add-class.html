@@ -1,0 +1,22 @@
+<template name="addClass">
+    <div class="container">
+        <form id="addClass" data-parsley-validate>
+            <div class="form-group">
+                <label for="textClass">
+                    Class Name
+                </label>
+                <input type="text" name="textClass" id="textClass" class="form-control" placeholder="SE-IT" data-parsley-required="true"/>
+            </div>
+
+            <div class="form-group">
+                <label for="branch">
+                    Branch
+                </label>
+                <input type="text" name="branch" id="branch" class="form-control" placeholder="IT" data-parsley-required="true"/>
+            </div>
+            <button type="submit" class="btn btn-primary" name="submit">
+                Add Class
+            </button>
+        </form>
+    </div>
+</template>

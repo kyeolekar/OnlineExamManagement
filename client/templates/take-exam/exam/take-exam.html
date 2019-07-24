@@ -1,0 +1,18 @@
+<template name="takeExam">
+  <!-- Display list of all exams and select one to continue -->
+  <div class="container">
+    <form role="form" id="takeExam">
+      <legend>Take Exam</legend>
+    
+      <div class="form-group">
+        <label for="examName">Select Exam</label>
+        <select name="exams" id="inputExams" class="form-control" required="required">
+          {{#each exam}}
+          <option>{{getSubject subjectCode}} ({{examName}})</option>
+          {{/each}}
+        </select>
+      </div>
+      <button type="submit" class="btn btn-danger pull-right">Take Exam</button>
+    </form>
+  </div>
+</template>

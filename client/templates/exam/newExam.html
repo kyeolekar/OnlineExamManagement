@@ -1,0 +1,93 @@
+<template name="newExam">
+  <!-- {{#if newExamToken}} -->
+    <div class="container">
+
+
+        <h3 class="pull-left">Exam Name</h3>
+        <form id="deleteExam">
+        <label for="deleteExamN" class="pull-right"><button id="deleteExamN" type="submit" class=" btn btn-danger">Delete Exam</button></label>
+        </form>
+        <div class="row">
+        <label for="generateExam" class="pull-right"><a href="/exam/{{examId}}/result"><button  class=" btn btn-danger">Generate Results</button></a></label>
+        </div>
+        
+
+      <form id="updateExam">
+        <div class="input-group">
+          <input type="text" class="form-control" id="updateExamName" placeholder="Search for..." value={{examName}}>
+          <span class="input-group-btn">
+            <button class="btn btn-info updateExam" type="submit">Update</button>
+          </span>
+        </div><!-- /input-group -->
+      </form>
+
+
+      <form id="newExam" data-parsley-validate>
+      <!-- <legend>Exam Name - {{examName}}</legend> -->
+          <br>
+        <div class="form-group">
+          <label for="questionName">Question</label>
+          <input type="text" class="form-control" id="questionName" placeholder="What is WWW?" data-parsley-required="true" autofocus tabindex="1"/>
+        </div>
+        <div id="simple-clone" class="demo-wrap row">
+          <div class="toclone col-md-6">
+              <div class="form-group">
+                <label for="answerName">Answer</label>
+                <div class="input-group answers">
+                  <input type="text" name="answerName" tabindex="2" id="answerName" class="form-control name" placeholder="WWW is World Wide Web" data-parsley-required="true" required>
+                  <span class="input-group-addon">
+                    <input type="radio" name="correct" id="correct" checked="true" class="correct" aria-label="..." tabindex="-1">
+                  </span>
+                </div><!-- /input-group -->
+              </div>
+              <a href="#" class="clone" tabindex="-1" >Add Answer</a>
+              <a href="#" class="delete" tabindex="-1">Remove Answer</a>      
+          </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" tabindex="3">Add Question</button>
+         {{>templateLoader}}
+        <a href="/exam"><button type="submit" class="btn btn-success pull-right">Go back</button></a>
+      </form>
+
+      <br><br>
+      
+      <!-- {{> ReactiveDatatable tableData=allQuestions }} -->
+      {{#if sr}}
+      <legend>{{sr}} Questions</legend>
+      <table class="table table-striped">
+          <thead>
+            <tr>
+              <!-- <th>Sr No</th> -->
+              <th>Question Name</th>
+              <th>Answers</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each allQuestions}}
+            <tr>
+              <!-- <td>{{_id}}</td> -->
+              <td>{{name}}</td>
+              <td>{{answers.length}}</td>
+              <td><a class="questionEdit"><span class="glyphicon glyphicon-edit"></span></a></td>
+              <td><a class="questionDelete"><span class="glyphicon glyphicon-minus-sign"></span></a></td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      {{else}}
+      <div class="center"><h3 >No questions are present in this exam.</h3>
+      </div>
+      {{/if}}
+
+<!--       <ul>
+        {{#each allQuestions}}
+          <li>{{_id}}</li>
+          {{/each}}
+      </ul>
+ -->
+    </div>
+  <!-- {{/if}} -->
+</template>

@@ -1,0 +1,30 @@
+<template name="editQuestion">
+  <div class="container">
+    <form id="editQuestion" data-parsley-validate>
+    <!-- <legend>Exam Name - {{answer}}</legend> -->
+      <div class="form-group">
+        <label for="questionName">Question</label>
+        <input type="text" class="form-control" id="questionName" placeholder="What is WWW?" data-parsley-required="true" value="{{question}}" />
+      </div>
+      <div id="simple-clone" class="demo-wrap row">
+        <div class="toclone col-md-6">
+            <div class="form-group">
+              <label for="answerName">Answer</label>
+              <div class="input-group answers">
+                <input type="text" name="answerName" id="answerName" class="form-control name" placeholder="WWW is World Wide Web" data-parsley-required="true" required>
+                <span class="input-group-addon">
+                  <input type="radio" id="correct" name="correct" checked="true" class="correct" aria-label="...">
+                </span>
+              </div><!-- /input-group -->
+            </div>
+            <a href="#" class="clone">Add Answer</a>
+            <a href="#" class="delete">Remove Answer</a>      
+        </div>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Add Question</button>
+      <a href="/exam/{{examId}}"><button type="submit" class="btn btn-success pull-right">Go back</button></a>
+    </form>
+
+  </div>
+</template>

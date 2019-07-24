@@ -1,0 +1,35 @@
+<template name="classView">
+  <div class="container">
+  {{> addClass}}
+  <br>
+
+
+    {{#if classCount}}
+      <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Class Name</th>
+        <th>Branch Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each classNames}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{branch}}</td>
+          <td><a href="/class/{{_id}}" class="classEdit"><span class="glyphicon glyphicon-edit"></span></a></td>
+          <td><a class="classDelete"><span class="glyphicon glyphicon-minus-sign"></span></a></td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <h2>No Class Found.</h2><br>
+    <h3><a href="{{pathFor route='addClass'}}">Add new Class</a></h3>
+  {{/if}}
+  </div>
+
+
+</template>

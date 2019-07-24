@@ -1,0 +1,44 @@
+<template name="appBody">
+  {{> flashMessages}}
+
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <ul class="nav navbar-nav">
+        {{#if isInRole 'Student'}}
+        <li class="{{isActiveRoute 'takeExam'}}"><a href="{{pathFor route='takeExam'}}">Take Exam</a></li>
+        <li class="{{isActiveRoute 'previousExams'}}"><a href="{{pathFor route='previousExams'}}">Previous Submitted Exams</a></li>
+        {{/if}}
+        {{#if isInRole 'Administrator,Staff'}}
+        <li class="{{isActiveRoute 'home'}}"><a href="{{ pathFor route='home'}}">Home</a></li>
+        <li class="{{isActiveRoute 'exam'}}"><a href="{{pathFor route='exam'}}">Exams</a></li>
+        <li class="{{isActiveRoute 'viewStudents'}}"><a href="{{pathFor route='viewStudents'}}">Students</a></li>
+        <!-- <li>{{> loginButtons}}</li> -->
+        {{#if isInRole 'Administrator'}}
+        <li class="{{isActiveRoute 'classView'}}"><a href="{{pathFor route='classView'}}">Class</a></li>
+        <li class="{{isActiveRoute 'subjectView'}}"><a href="{{pathFor route='subjectView'}}">Subjects</a></li>
+        
+        <li class="dropdown {{isActiveRoute regex='addSubject|addClass'}}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{pathFor route='addSubject'}}">New Subject</a></li>
+            <li><a href="{{pathFor route='addClass'}}">New Class</a></li>
+          </ul>
+        </li>
+        {{/if}}
+        {{/if}}
+      </ul>
+      {{#if currentUser}}
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown pull-right {{isActiveRoute regex='changePassword|logout'}}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{username}}<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{pathFor route='changePassword'}}">Change Password</a></li>
+            <li><a href="{{pathFor route='logout'}}">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+      {{/if}}
+      </div>
+  </nav>
+  {{>yield}}
+</template>

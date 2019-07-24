@@ -1,0 +1,24 @@
+<template name="viewStudents">
+  <div class="container">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Student Email</th>
+          <th>Student Name</th>
+          <th>Exams taken</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each studentDetails}}
+        <tr>
+          <td><a href="/student/{{_id}}">
+            {{#each emails}}<td>{{address}}</td>{{/each}}
+          </a></td>
+          <td>{{profile.name}}</td>
+          <td>{{profile.examsTaken}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>

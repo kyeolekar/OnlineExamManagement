@@ -1,0 +1,48 @@
+<template name="generateResult">
+  <div class="container">
+   {{#if count}}
+   <form id="generateAll" class="pull-right"><button class="btn btn-danger" type="submit">Generate Results for all</button></form>
+
+<!--    <legend class="pull-left">Submitted By {{count}} Students</legend>
+     <table class="table table-hover">
+       <thead>
+         <tr>
+           <th>Taken By</th>
+           <th>Submitted Answers</th>
+           <th>Correct Answer Answers</th>
+         </tr>
+       </thead>
+       <tbody>
+         {{#each getAllSubmits}}
+         <tr>
+           <td>{{takenBy}}</td>
+           <td>
+             <ol>
+               {{#each submittedAnswers}}
+               <ol>
+                 <li>{{questionId}}</li>
+                 <li>{{answer}}</li>
+               </ol>
+               {{/each}}
+             </ol>
+           </td>
+           <td>
+             <ol>
+               {{#each correct}}
+                 <li>{{_id}}</li>
+                 <li>{{correctAnswer}}</li>
+               {{/each}}
+             </ol>
+           </td>
+         </tr>
+         {{/each}}
+       </tbody>
+     </table> -->
+     {{> viewResultPerformance}}
+
+     {{else}}
+      <div class="text-center"><h2>Looks like no one has submitted this exam !</h2></div>
+
+     {{/if}} 
+  </div>
+</template>

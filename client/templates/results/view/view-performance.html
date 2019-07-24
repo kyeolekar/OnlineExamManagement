@@ -1,0 +1,33 @@
+<template name="viewResultPerformance">
+  <div class="container">
+    {{#if info}}
+
+    <legend>View Results of <strong>{{getExam.examName}}</strong> of Class <strong>{{getExam.className}}</strong></legend>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Student Email</th>
+          <th>Correct Answers</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each info}}
+        <tr>
+          <td>{{user takenBy}}</td>
+          <td>{{correctAnswer}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+
+    {{else}}
+
+    <h1>No Results found. Looks like you have not generated the result or no student has submitted the exam.</h1><br>
+    <h3><a href="/exam/{{examId}}/result">Generate your Result now</a></h3>
+
+
+    {{/if}}
+
+  </div>
+</template>

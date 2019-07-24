@@ -1,0 +1,53 @@
+<template name="register">
+  <div class="container">
+    {{#if currentUser}}
+      <div class="jumbotron">
+        <div class="container">
+          <p>You're already logged in</p>
+          <a href="{{pathFor route='logout'}}">Logout</a>          
+        </div>
+      </div>
+    {{else}}
+      <div class="well">Already Registered? <a href="{{pathFor route='login'}}">Login now.</a></div>
+      <form id="register-form" data-parsley-validate>
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Name" data-parsley-required="false" data-parsley-minlength="6">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address *</label>
+          <input type="email" class="form-control" id="email" placeholder="Email" data-parsley-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password *</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" data-parsley-minlength="6" data-parsley-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Confirm Password *</label>
+          <input type="password" class="form-control" id="password2" placeholder="Password" data-parsley-minlength="6" data-parsley-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="role">Select Role *</label>
+          <select class="form-control" id="role" data-parsely-required="true">
+            <option>Staff</option> 
+            <option>Student</option>
+            <option>Administrator</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Registration Key <small class="text-right">(Required for Administrator/Staff)</small></label>
+          <input type="text" class="form-control" id="key" placeholder="1125asd56wer62" data-parsley-required="false">
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Create Account" />
+
+      </form>
+    {{/if}}
+  </div>
+</template>
